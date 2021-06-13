@@ -283,6 +283,11 @@ forever(function () {
     }
 })
 forever(function () {
+    music.playTone(262, music.beat(BeatFraction.Whole))
+    music.playMelody("G C5 E B B E C5 G ", 1000)
+    music.playTone(466, music.beat(BeatFraction.Whole))
+})
+forever(function () {
     pause(2500)
     difficulty = difficulty - 10
 })
@@ -290,9 +295,4 @@ forever(function () {
     if (info.life() == 0) {
         game.over(false)
     }
-})
-forever(function () {
-    music.playTone(262, music.beat(BeatFraction.Whole))
-    music.playMelody("G C5 E B B E C5 G ", 1000)
-    music.playTone(466, music.beat(BeatFraction.Whole))
 })
