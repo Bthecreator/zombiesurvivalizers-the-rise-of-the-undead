@@ -1,25 +1,47 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    bullet = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . 5 5 5 . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, Player1, 300, 0)
+    if (direction == 1) {
+        bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 5 5 5 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Player1, 300, 0)
+    }
+    if (direction == 0) {
+        bullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 5 5 5 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Player1, -300, 0)
+    }
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    pause(350)
+    pause(500)
     info.changeLifeBy(-1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -27,6 +49,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     info.changeScoreBy(10)
 })
 let bullet: Sprite = null
+let direction = 0
 let Player1: Sprite = null
 scene.setBackgroundImage(img`
     eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
@@ -191,7 +214,7 @@ controller.moveSprite(Player1, 100, 100)
 zombie.follow(Player1, 30)
 let difficulty = 1000
 Player1.setStayInScreen(true)
-zombie.setPosition(158, 121)
+zombie.setPosition(0, 0)
 forever(function () {
     pause(difficulty)
     zombie = sprites.create(img`
@@ -214,6 +237,50 @@ forever(function () {
         `, SpriteKind.Enemy)
     zombie.follow(Player1, 30)
     zombie.setPosition(randint(10, scene.screenWidth()), randint(10, scene.screenHeight()))
+})
+forever(function () {
+    if (controller.left.isPressed()) {
+        Player1.setImage(img`
+            . . . . . . . f f f f f . . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . . f . f . . . f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . . f . . . . . f . . . 
+            . . . . . . . f f f f f . . . . 
+            . . . b b b b . . f . . . . . . 
+            . . . . . b b f . f . . . . . . 
+            . . . . . . b . f f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . . f . . . . . . 
+            . . . . . . . . f . f . . . . . 
+            . . . . . . . f . . . f . . . . 
+            . . . . . . f . . . . . f . . . 
+            `)
+        direction = 0
+    }
+    if (controller.right.isPressed()) {
+        Player1.setImage(img`
+            . . . . f f f f f . . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f . . . f . f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            . . . . f f f f f . . . . . . . 
+            . . . . . . f . . b b b b . . . 
+            . . . . . . f . f b b . . . . . 
+            . . . . . . f f . b . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . . . . . . . . 
+            . . . . . f . f . . . . . . . . 
+            . . . . f . . . f . . . . . . . 
+            . . . f . . . . . f . . . . . . 
+            `)
+        direction = 1
+    }
 })
 forever(function () {
     pause(2500)
