@@ -44,8 +44,8 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
     pause(500)
     info.changeLifeBy(-1)
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.disintegrate, 500)
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite2, otherSprite2) {
+    otherSprite2.destroy(effects.disintegrate, 500)
     info.changeScoreBy(10)
 })
 let bullet: Sprite = null
