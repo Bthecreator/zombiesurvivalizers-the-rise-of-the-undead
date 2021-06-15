@@ -184,16 +184,16 @@ scene.set_background_image(img("""
 info.set_life(5)
 Player1 = sprites.create(img("""
         . . . . f f f f f . . . . . . . 
-            . . . f . . . . . f . . . . . . 
-            . . . f . . . f . f . . . . . . 
-            . . . f . . . . . f . . . . . . 
-            . . . f . . . . . f . . . . . . 
-            . . . f . . . . . f . . . . . . 
-            . . . . f f f f f . . . . . . . 
-            . . . . . . f . . b b b b . . . 
-            . . . . . . f . f b b . . . . . 
+            . . . f 1 1 1 1 1 f . . . . . . 
+            . . . f 1 1 1 8 1 f . . . . . . 
+            . . . f 1 1 1 8 1 f . . . . . . 
+            . . . f 1 1 1 1 1 f . . . . . . 
+            . . . f 1 1 1 8 8 f . . . . . . 
+            . . . . f f f f f . . . . b . . 
+            . . . . . . f . . b b b b b . . 
+            . . . . . . f . f b b b . . . . 
             . . . . . . f f . b . . . . . . 
-            . . . . . . f . . . . . . . . . 
+            . . . . . . f . . b . . . . . . 
             . . . . . . f . . . . . . . . . 
             . . . . . . f . . . . . . . . . 
             . . . . . f . f . . . . . . . . 
@@ -203,11 +203,11 @@ Player1 = sprites.create(img("""
     SpriteKind.player)
 zombie = sprites.create(img("""
         . . . . . . . 7 7 7 7 7 . . . . 
-            . . . . . . 7 . . . . . 7 . . . 
-            . . . . . . 7 . 2 . . . 7 . . . 
-            . . . . . . 7 . . . . . 7 . . . 
-            . . . . . . 7 . . . . . 7 . . . 
-            . . . . . . 7 . . . . . 7 . . . 
+            . . . . . . 7 7 7 7 7 7 7 . . . 
+            . . . . . . 7 7 2 7 7 7 7 . . . 
+            . . . . . . 7 7 2 7 7 7 7 . . . 
+            . . . . . . 7 7 7 7 7 7 7 . . . 
+            . . . . . . 7 2 2 7 7 7 7 . . . 
             . . . . . . . 7 7 7 7 7 . . . . 
             . . . . . . . . . 7 . . . . . . 
             . . . . 7 7 7 7 . 7 . . . . . . 
@@ -225,17 +225,18 @@ zombie.follow(Player1, 30)
 difficulty = 1000
 Player1.set_stay_in_screen(True)
 zombie.set_position(0, 0)
+Player1.set_position(75, 60)
 
 def on_forever():
     global zombie
     pause(difficulty)
     zombie = sprites.create(img("""
             . . . . . . . 7 7 7 7 7 . . . . 
-                    . . . . . . 7 . . . . . 7 . . . 
-                    . . . . . . 7 . 2 . . . 7 . . . 
-                    . . . . . . 7 . . . . . 7 . . . 
-                    . . . . . . 7 . . . . . 7 . . . 
-                    . . . . . . 7 . . . . . 7 . . . 
+                    . . . . . . 7 7 7 7 7 7 7 . . . 
+                    . . . . . . 7 7 2 7 7 7 7 . . . 
+                    . . . . . . 7 7 2 7 7 7 7 . . . 
+                    . . . . . . 7 7 7 7 7 7 7 . . . 
+                    . . . . . . 2 2 7 7 7 7 7 . . . 
                     . . . . . . . 7 7 7 7 7 . . . . 
                     . . . . . . . . . 7 . . . . . . 
                     . . . . 7 7 7 7 . 7 . . . . . . 
@@ -249,8 +250,8 @@ def on_forever():
         """),
         SpriteKind.enemy)
     zombie.follow(Player1, 30)
-    zombie.set_position(randint(10, scene.screen_width()),
-        randint(10, scene.screen_height()))
+    zombie.set_position(randint(5, scene.screen_width()),
+        randint(5, scene.screen_height()))
 forever(on_forever)
 
 def on_forever2():
@@ -258,16 +259,16 @@ def on_forever2():
     if controller.left.is_pressed():
         Player1.set_image(img("""
             . . . . . . . f f f f f . . . . 
-                        . . . . . . f . . . . . f . . . 
-                        . . . . . . f . f . . . f . . . 
-                        . . . . . . f . . . . . f . . . 
-                        . . . . . . f . . . . . f . . . 
-                        . . . . . . f . . . . . f . . . 
-                        . . . . . . . f f f f f . . . . 
-                        . . . b b b b . . f . . . . . . 
-                        . . . . . b b f . f . . . . . . 
+                        . . . . . . f 1 1 1 1 1 f . . . 
+                        . . . . . . f 1 8 1 1 1 f . . . 
+                        . . . . . . f 1 8 1 1 1 f . . . 
+                        . . . . . . f 1 1 1 1 1 f . . . 
+                        . . . . . . f 8 8 1 1 1 f . . . 
+                        . . b . . . . f f f f f . . . . 
+                        . . b b b b b . . f . . . . . . 
+                        . . . . b b b f . f . . . . . . 
                         . . . . . . b . f f . . . . . . 
-                        . . . . . . . . . f . . . . . . 
+                        . . . . . . b . . f . . . . . . 
                         . . . . . . . . . f . . . . . . 
                         . . . . . . . . . f . . . . . . 
                         . . . . . . . . f . f . . . . . 
@@ -278,16 +279,16 @@ def on_forever2():
     if controller.right.is_pressed():
         Player1.set_image(img("""
             . . . . f f f f f . . . . . . . 
-                        . . . f . . . . . f . . . . . . 
-                        . . . f . . . f . f . . . . . . 
-                        . . . f . . . . . f . . . . . . 
-                        . . . f . . . . . f . . . . . . 
-                        . . . f . . . . . f . . . . . . 
-                        . . . . f f f f f . . . . . . . 
-                        . . . . . . f . . b b b b . . . 
-                        . . . . . . f . f b b . . . . . 
+                        . . . f 1 1 1 1 1 f . . . . . . 
+                        . . . f 1 1 1 8 1 f . . . . . . 
+                        . . . f 1 1 1 8 1 f . . . . . . 
+                        . . . f 1 1 1 1 1 f . . . . . . 
+                        . . . f 1 1 1 8 8 f . . . . . . 
+                        . . . . f f f f f . . . . b . . 
+                        . . . . . . f . . b b b b b . . 
+                        . . . . . . f . f b b b . . . . 
                         . . . . . . f f . b . . . . . . 
-                        . . . . . . f . . . . . . . . . 
+                        . . . . . . f . . b . . . . . . 
                         . . . . . . f . . . . . . . . . 
                         . . . . . . f . . . . . . . . . 
                         . . . . . f . f . . . . . . . . 
@@ -298,18 +299,18 @@ def on_forever2():
 forever(on_forever2)
 
 def on_forever3():
-    music.play_tone(262, music.beat(BeatFraction.WHOLE))
-    music.play_melody("G C5 E B B E C5 G ", 1000)
-    music.play_tone(466, music.beat(BeatFraction.WHOLE))
+    if info.life() == 0:
+        game.over(False, effects.dissolve)
 forever(on_forever3)
 
 def on_forever4():
-    global difficulty
-    pause(2500)
-    difficulty = difficulty - 10
+    music.play_tone(262, music.beat(BeatFraction.WHOLE))
+    music.play_melody("G C5 E B B E C5 G ", 1000)
+    music.play_tone(466, music.beat(BeatFraction.WHOLE))
 forever(on_forever4)
 
 def on_forever5():
-    if info.life() == 0:
-        game.over(False)
+    global difficulty
+    pause(2500)
+    difficulty = difficulty - 10
 forever(on_forever5)
