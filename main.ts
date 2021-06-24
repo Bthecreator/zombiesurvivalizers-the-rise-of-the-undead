@@ -1,79 +1,3 @@
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Player1.image == img`
-        . . . . f f f f f . . . . . . . 
-        . . . f 1 1 1 1 1 f . . . . . . 
-        . . . f 1 1 1 8 1 f . . . . . . 
-        . . . f 1 1 1 8 1 f . . . . . . 
-        . . . f 1 1 1 1 1 f . . . . . . 
-        . . . f 1 1 1 8 8 f . . . . . . 
-        . . . . f f f f f . . . . 5 . . 
-        . . . . . . f . . 6 6 6 6 6 . . 
-        . . . . . . f . f b b b . . . . 
-        . . . . . . f f . b . . . . . . 
-        . . . . . . f . . b . . . . . . 
-        . . . . . . f . . . . . . . . . 
-        . . . . . . f . . . . . . . . . 
-        . . . . . f . f . . . . . . . . 
-        . . . . f . . . f . . . . . . . 
-        . . . f . . . . . f . . . . . . 
-        `) {
-        Player1.setImage(img`
-            . . . . f f f f f . . . . . . . 
-            . . . f 1 1 1 1 1 f . . . . . . 
-            . . . f 1 1 1 8 1 f . . . . . . 
-            . . . f 1 1 1 8 1 f . . . . . . 
-            . . . f 1 1 1 1 1 f . . . . . . 
-            . . . f 1 1 1 8 8 f . . . . . . 
-            . . . . f f f f f . . . . . . . 
-            . . . . . . f . . b . . . . . . 
-            . . . . . . f . f b 1 1 1 1 . . 
-            . . . . . . f f . b . . . . . . 
-            . . . . . . f . . . . . . . . . 
-            . . . . . . f . . . . . . . . . 
-            . . . . . . f . . . . . . . . . 
-            . . . . . f . f . . . . . . . . 
-            . . . . f . . . f . . . . . . . 
-            . . . f . . . . . f . . . . . . 
-            `)
-    }
-    if (Player1.image == img`
-        . . . . . . . f f f f f . . . . 
-        . . . . . . f 1 1 1 1 1 f . . . 
-        . . . . . . f 1 8 1 1 1 f . . . 
-        . . . . . . f 1 8 1 1 1 f . . . 
-        . . . . . . f 1 1 1 1 1 f . . . 
-        . . . . . . f 8 8 1 1 1 f . . . 
-        . . 5 . . . . f f f f f . . . . 
-        . . 6 6 6 6 6 . . f . . . . . . 
-        . . . . b b b f . f . . . . . . 
-        . . . . . . b . f f . . . . . . 
-        . . . . . . b . . f . . . . . . 
-        . . . . . . . . . f . . . . . . 
-        . . . . . . . . . f . . . . . . 
-        . . . . . . . . f . f . . . . . 
-        . . . . . . . f . . . f . . . . 
-        . . . . . . f . . . . . f . . . 
-        `) {
-        Player1.setImage(img`
-            . . . . . . . f f f f f . . . . 
-            . . . . . . f 1 1 1 1 1 f . . . 
-            . . . . . . f 1 8 1 1 1 f . . . 
-            . . . . . . f 1 8 1 1 1 f . . . 
-            . . . . . . f 1 1 1 1 1 f . . . 
-            . . . . . . f 8 8 1 1 1 f . . . 
-            . . . . . . . f f f f f . . . . 
-            . . . . . . b . . f . . . . . . 
-            . . 1 1 1 1 b f . f . . . . . . 
-            . . . . . . b . f f . . . . . . 
-            . . . . . . . . . f . . . . . . 
-            . . . . . . . . . f . . . . . . 
-            . . . . . . . . . f . . . . . . 
-            . . . . . . . . f . f . . . . . 
-            . . . . . . . f . . . f . . . . 
-            . . . . . . f . . . . . f . . . 
-            `)
-    }
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (direction == 1) {
         bullet = sprites.createProjectileFromSprite(img`
@@ -119,82 +43,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     pause(500)
     info.changeLifeBy(-1)
-})
-controller.B.onEvent(ControllerButtonEvent.Released, function () {
-    if (Player1.image == img`
-        . . . . f f f f f . . . . . . . 
-        . . . f 1 1 1 1 1 f . . . . . . 
-        . . . f 1 1 1 8 1 f . . . . . . 
-        . . . f 1 1 1 8 1 f . . . . . . 
-        . . . f 1 1 1 1 1 f . . . . . . 
-        . . . f 1 1 1 8 8 f . . . . . . 
-        . . . . f f f f f . . . . . . . 
-        . . . . . . f . . b . . . . . . 
-        . . . . . . f . f b 1 1 1 1 . . 
-        . . . . . . f f . b . . . . . . 
-        . . . . . . f . . . . . . . . . 
-        . . . . . . f . . . . . . . . . 
-        . . . . . . f . . . . . . . . . 
-        . . . . . f . f . . . . . . . . 
-        . . . . f . . . f . . . . . . . 
-        . . . f . . . . . f . . . . . . 
-        `) {
-        Player1.setImage(img`
-            . . . . f f f f f . . . . . . . 
-            . . . f 1 1 1 1 1 f . . . . . . 
-            . . . f 1 1 1 8 1 f . . . . . . 
-            . . . f 1 1 1 8 1 f . . . . . . 
-            . . . f 1 1 1 1 1 f . . . . . . 
-            . . . f 1 1 1 8 8 f . . . . . . 
-            . . . . f f f f f . . . . b . . 
-            . . . . . . f . . b b b b b . . 
-            . . . . . . f . f b b b . . . . 
-            . . . . . . f f . b . . . . . . 
-            . . . . . . f . . b . . . . . . 
-            . . . . . . f . . . . . . . . . 
-            . . . . . . f . . . . . . . . . 
-            . . . . . f . f . . . . . . . . 
-            . . . . f . . . f . . . . . . . 
-            . . . f . . . . . f . . . . . . 
-            `)
-    }
-    if (Player1.image == img`
-        . . . . . . . f f f f f . . . . 
-        . . . . . . f 1 1 1 1 1 f . . . 
-        . . . . . . f 1 8 1 1 1 f . . . 
-        . . . . . . f 1 8 1 1 1 f . . . 
-        . . . . . . f 1 1 1 1 1 f . . . 
-        . . . . . . f 8 8 1 1 1 f . . . 
-        . . . . . . . f f f f f . . . . 
-        . . . . . . b . . f . . . . . . 
-        . . 1 1 1 1 b f . f . . . . . . 
-        . . . . . . b . f f . . . . . . 
-        . . . . . . . . . f . . . . . . 
-        . . . . . . . . . f . . . . . . 
-        . . . . . . . . . f . . . . . . 
-        . . . . . . . . f . f . . . . . 
-        . . . . . . . f . . . f . . . . 
-        . . . . . . f . . . . . f . . . 
-        `) {
-        Player1.setImage(img`
-            . . . . . . . f f f f f . . . . 
-            . . . . . . f 1 1 1 1 1 f . . . 
-            . . . . . . f 1 8 1 1 1 f . . . 
-            . . . . . . f 1 8 1 1 1 f . . . 
-            . . . . . . f 1 1 1 1 1 f . . . 
-            . . . . . . f 8 8 1 1 1 f . . . 
-            . . 5 . . . . f f f f f . . . . 
-            . . 6 6 6 6 6 . . f . . . . . . 
-            . . . . b b b f . f . . . . . . 
-            . . . . . . b . f f . . . . . . 
-            . . . . . . b . . f . . . . . . 
-            . . . . . . . . . f . . . . . . 
-            . . . . . . . . . f . . . . . . 
-            . . . . . . . . f . f . . . . . 
-            . . . . . . . f . . . f . . . . 
-            . . . . . . f . . . . . f . . . 
-            `)
-    }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite2, otherSprite2) {
     otherSprite2.destroy(effects.disintegrate, 500)
@@ -363,7 +211,7 @@ let zombie = sprites.create(img`
     . . . . . . f . . . . . f . . . 
     `, SpriteKind.Enemy)
 controller.moveSprite(Player1, 100, 100)
-zombie.follow(Player1, 30)
+zombie.follow(Player1, 20)
 let difficulty = 1000
 Player1.setStayInScreen(true)
 zombie.setPosition(0, 0)
